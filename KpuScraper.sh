@@ -10,14 +10,13 @@ cd $WORKSPACE
 rm -rf $OUTPUT_DIR
 mkdir $OUTPUT_DIR
 
-#Download the data
-#cd $WORKSPACE
-#wget -r --no-parent https://pilkada2017.kpu.go.id/hasil/t1/dki_jakarta
+#Download the data for DKI Jakarta (you can change it into any province you want, if any)
+cd $WORKSPACE
+wget -r --no-parent https://pilkada2017.kpu.go.id/hasil/t1/dki_jakarta
 
 #List all of the villages
 cd $WORKSPACE/pilkada2017.kpu.go.id/hasil/t1
 find */*/*/* > $WORKSPACE/$VILLAGE_LIST
-
 #If you want to select only jakarta.
 #find dki_jakarta/*/*/* > $WORKSPACE/$VILLAGE_LIST
 
@@ -28,8 +27,6 @@ do
   echo "REGION=$i" >> $SUMMARY;
   cat "pilkada2017.kpu.go.id/hasil/t1/$i" |grep "rekapHasil.push([0-9]*)"|tr -d '\040\011' >> $SUMMARY;
   echo "PEMILIH" >> $SUMMARY;
-  #cat "pilkada2017.kpu.go.id/hasil/t1/$i" | grep "                                                   <td>[0-9][0-9]*</td>" | tr -d '\040\011' >> $SUMMARY;
-  #cat "pilkada2017.kpu.go.id/hasil/t1/$i" | grep "                                                    <td class=\"text-right\">[0-9][0-9]*</td>" | tr -d '\040\011' >> $SUMMARY;
   cat "pilkada2017.kpu.go.id/hasil/t1/$i" | grep "^ \{52\}<td class=\"text-right\">[0-9]*.[0-9]*</td>" | tr -d '\040\011' >> $SUMMARY;
   echo "REGION_DONE" >> $SUMMARY
 done
