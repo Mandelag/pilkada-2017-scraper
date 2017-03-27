@@ -32,7 +32,7 @@ do
 done
 
 #finally, using the KpuScraper.java
-javac KpuScraper2.java
-java KpuScraper2 $SUMMARY > $RESULT_TPS
+javac KpuScraper.java
+java KpuScraper $SUMMARY > $RESULT_TPS
 
 python Agregator.py $RESULT_TPS > $RESULT_KEL
