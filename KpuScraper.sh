@@ -1,5 +1,6 @@
-#Change with your own workspace
-WORKSPACE=~/workspace/pilkada-new
+#Change with the path to pilkada-2017-scraper.
+WORKSPACE=~/workspace/pilkada-2017-scraper
+
 OUTPUT_DIR=output
 VILLAGE_LIST=output/list_kelurahan.txt
 SUMMARY=output/pilkada_gabung_ringkas2.txt
@@ -17,8 +18,6 @@ wget -r --no-parent https://pilkada2017.kpu.go.id/hasil/t1/dki_jakarta
 #List all of the villages
 cd $WORKSPACE/pilkada2017.kpu.go.id/hasil/t1
 find */*/*/* > $WORKSPACE/$VILLAGE_LIST
-#If you want to select only jakarta.
-#find dki_jakarta/*/*/* > $WORKSPACE/$VILLAGE_LIST
 
 #Initial scrape (before using the java program)
 cd $WORKSPACE
