@@ -32,4 +32,4 @@ javac KpuScraper.java
 java KpuScraper $SUMMARY > $RESULT_TPS
 
 #agregates the result.
-python Agregator.py $RESULT_TPS > $RESULT_KEL
+python GroupStat.py $RESULT_TPS > $RESULT_KEL
